@@ -13,8 +13,7 @@ class TransformationQueue {
     public transformString(string) {
         let textTransformer = new TextTransformer();
         
-        // Checken welke transformations er gekozen zijn.
-        let selectedOptions = document.getElementsByClassName('selected-transformation');
+        // Gekozen transformaties toepassen.
         for(let i = this.selectedTransformations.length -1; i >= 0 ; i--) {
             let value = this.selectedTransformations[i].value;
             textTransformer = this.determineTransformation(value, textTransformer);
@@ -52,7 +51,6 @@ class TransformationQueue {
         let value =  el.getAttribute('data-value');
         let values = {'value': value, 'name': name};
 
-        console.log(this.inArray(values, this.selectedTransformations));
         // Check if option is already selected.
         if(!this.inArray(values, this.selectedTransformations)) {
             // Add to array of chosen transformations.

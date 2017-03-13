@@ -20,8 +20,8 @@ window.addEventListener("load", function () {
     while (typeScriptIterator.hasNext()) {
         addToOutput('Typescript Iterator: ' + typeScriptIterator.next().value);
     }
-    while (typeScriptItrableIterator.hasNext()) {
-        addToOutput('Typescript Iterable Iterator: ' + typeScriptItrableIterator.next().value);
+    for (let item of typeScriptItrableIterator) {
+        addToOutput('Typescript Iterable Iterator: ' + item);
     }
     function addToOutput(s) {
         let output = document.getElementById('output-list');
@@ -36,9 +36,12 @@ class SimpleIterator {
         this.collection = collection;
     }
     next() {
-        var result = this.collection[this.pointer];
-        this.pointer += 1;
-        return result;
+        if (this.hasNext()) {
+            return this.collection[this.pointer++];
+        }
+        else {
+            return null;
+        }
     }
     hasNext() {
         if (this.pointer < this.collection.length) {
@@ -55,18 +58,21 @@ class TypeScriptIterableIterator {
         this.collection = collection;
     }
     next() {
-        return {
-            done: false,
-            value: this.collection[this.pointer++]
-        };
-    }
-    hasNext() {
-        if (this.pointer < this.collection.length) {
-            return true;
+        if (this.hasNext()) {
+            return {
+                done: false,
+                value: this.collection[this.pointer++]
+            };
         }
         else {
-            return false;
+            return {
+                done: true,
+                value: null
+            };
         }
+    }
+    hasNext() {
+        return this.pointer < this.collection.length;
     }
     [Symbol.iterator]() {
         return this;
@@ -78,23 +84,15 @@ class TypeScriptIterator {
         this.collection = collection;
     }
     next() {
-        let pointer = this.pointer;
-        this.pointer++;
-        return {
-            done: false,
-            value: this.collection[pointer]
-        };
+        if (this.hasNext()) {
+            return {
+                done: false,
+                value: this.collection[this.pointer++]
+            };
+        }
     }
     hasNext() {
-        if (this.pointer < this.collection.length) {
-            return true;
-        }
-        else {
-            return false;
-        }
-    }
-    [Symbol.iterator]() {
-        return this;
+        return this.pointer < this.collection.length;
     }
 }
 //# sourceMappingURL=main.js.map

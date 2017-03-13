@@ -8,9 +8,11 @@ class SimpleIterator implements IteratorInterface {
      }
 
     public next(): Object {
-        var result = this.collection[this.pointer];
-        this.pointer += 1;
-        return result;
+        if(this.hasNext()) {
+            return this.collection[this.pointer++];
+        } else {
+            return null;
+        }
     }
 
     public hasNext(): boolean {

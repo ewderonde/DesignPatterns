@@ -1,11 +1,11 @@
-class TypeScriptIterableIterator implements IterableIterator<Object> {
-
-
-    private collection : number[];
+class ClubIterableIterator implements IterableIterator<Object> {
+    private collection : string[];
     private pointer = 0;
+    private iterator: ClubIterableIterator;
 
 
-    constructor(collection: number[]) {
+    constructor(collection: string[]) {
+        this.iterator = new ClubIterableIterator(clubs)
         this.collection = collection;
      }
 
@@ -22,7 +22,7 @@ class TypeScriptIterableIterator implements IterableIterator<Object> {
             }
         }
     }
-
+    
     public hasNext(): Boolean {
         return this.pointer < this.collection.length;
     }

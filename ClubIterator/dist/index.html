@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <title>Decorated Text</title>
+  <link rel="stylesheet" type="text/css" href="css/style.css">
+</head>
+
+  <div class="grid form-section">
+    <form action="" method="get" class="search" id="the-form">
+      <div class="form-field">
+        <input id="text-input" type="search" name="search" placeholder="Insert text here." class="form-input" autocomplete="off" required>
+        <input type="submit" value="Submit" class="button" id="submit">
+      </div>
+        <br>
+        <button id="button1" type="button" class="btn btn-default transformation" data-value="1" data-name="Lower Case" >Lower Case</button>
+        <button id="button2" type="button" class="btn btn-default transformation" data-value="2" data-name="Summary" >Summary</button>
+        <button id="button3" type="button" class="btn btn-default transformation" data-value="3" data-name="Capital" >Capital</button>
+        <button id="button4" type="button" class="btn btn-default transformation" data-value="4" data-name="Reverse" >Reverse</button>
+        <button id="button5" type="button" class="btn btn-default transformation" data-value="5" data-name="Randomize" >Randomize</button>
+      </form>
+  </div>
+  <div class="grid">
+      <p id="order" class="selected-options"></p>
+      <ul id='transformation-list'>
+      </ul>
+
+      <div id="debug-container" hidden>
+        <span id="output"></span>
+  
+        <span id="log-title"><strong>Transformation Log:</strong></span>
+        <ul id="debug-list"></ul>
+      </div>
+  </div>
+  <script src="js/main.js"></script>
+</body>
+</html>

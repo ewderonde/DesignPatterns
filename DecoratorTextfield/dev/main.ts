@@ -10,8 +10,6 @@ class Main {
 
         this.transformationQueue = new TransformationQueue();
         TransformationDebug.Instance.showLog();
-        
-        
     }
 
     public handleSubmit() {

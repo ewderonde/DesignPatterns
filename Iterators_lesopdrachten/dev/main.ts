@@ -42,8 +42,8 @@ window.addEventListener("load", function() {
         addToOutput('Typescript Iterator: ' + typeScriptIterator.next().value);
     }
 
-    while(typeScriptItrableIterator.hasNext()) {
-        addToOutput('Typescript Iterable Iterator: ' +typeScriptItrableIterator.next().value);
+    for (let item of typeScriptItrableIterator) {
+        addToOutput('Typescript Iterable Iterator: ' + item);
     }
 
     function addToOutput(s: string) {
